@@ -1,7 +1,10 @@
 Version NEXT
 ============
 
-* 
+* Cart modifiers can add additional text ``data`` beside ``label`` and
+``value`` (this data would be saved in ExtraOrderPriceField and
+ExtraOrderItemPriceField models). This allows filtering extra order and
+extra order item fields by some criteria.
 
 Version 0.1.1
 =============
