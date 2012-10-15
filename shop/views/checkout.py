@@ -227,9 +227,9 @@ class ShippingBackendRedirectView(LoginMixin, ShopView):
             backend_namespace = self.request.session.pop('shipping_backend')
             if backend_namespace is None:
                 order = get_order_from_request(self.request)
-                order.status = Order.CONFIRMING
+                order.status = Order.CONFIRMED
                 order.save()
-                return HttpResponseRedirect(reverse('checkout_confirm'))
+                return HttpResponseRedirect(reverse('checkout_payment'))
             return HttpResponseRedirect(reverse(backend_namespace))
         except KeyError:
             return HttpResponseRedirect(reverse('cart'))
