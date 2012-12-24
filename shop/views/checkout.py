@@ -206,7 +206,7 @@ class CheckoutSelectionView(LoginMixin, ShopTemplateView):
                 self.request.session['payment_backend'] = \
                     billingshipping_form.cleaned_data['payment_method']
                 self.request.session['shipping_backend'] = \
-                    billingshipping_form.cleaned_data['shipping_method']
+                    billingshipping_form.cleaned_data.get('shipping_method', None)
 
                 # add extra info to order
                 self.save_extra_info_to_order(order, extra_info_form)
