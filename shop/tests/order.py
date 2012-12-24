@@ -64,7 +64,7 @@ class OrderUtilTestCase(TestCase):
 
     def test_request_with_order_returns_order(self):
         session = {}
-        session['order_id'] = self.order.id
+        session['order_id'] = self.order.pk
         setattr(self.request, 'session', session)
         ret = get_order_from_request(self.request)
         self.assertEqual(ret, self.order)
@@ -79,7 +79,7 @@ class OrderUtilTestCase(TestCase):
     def test_set_order_to_session_works(self):
         setattr(self.request, 'session', {})
         add_order_to_request(self.request, self.order)
-        self.assertEqual(self.request.session['order_id'], self.order.id)
+        self.assertEqual(self.request.session['order_id'], self.order.pk)
 
     def test_set_order_to_user_works(self):
         setattr(self.request, 'user', self.user)
@@ -106,7 +106,7 @@ class OrderUtilTestCase(TestCase):
 
     def test_addresses_are_conserved_properly(self):
         session = {}
-        session['order_id'] = self.order.id
+        session['order_id'] = self.order.pk
         setattr(self.request, 'session', session)
         ret = get_order_from_request(self.request)
         self.assertEqual(ret, self.order)
