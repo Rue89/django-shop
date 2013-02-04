@@ -222,7 +222,8 @@ class OrderConversionTestCase(TestCase):
                 )
         variation = ProductVariation.objects.create(
                 baseproduct=baseproduct,
-                name="white"
+                name="white",
+                active=True
                 )
         self.cart.add_product(variation)
         self.cart.update()
@@ -314,7 +315,7 @@ class OrderConversionTestCase(TestCase):
         if SKIP_BASEPRODUCT_TEST:
             return
         baseproduct = BaseProduct.objects.create(unit_price=Decimal('10.0'))
-        product = ProductVariation.objects.create(baseproduct=baseproduct)
+        product = ProductVariation.objects.create(baseproduct=baseproduct, active=True)
 
         self.cart.add_product(product)
         self.cart.update()
